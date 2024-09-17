@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_default/cmps/carCard.dart';
 import 'package:flutter_default/constants.dart';
 
 class HomePage extends StatefulWidget {
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 12,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 30),
@@ -71,20 +71,20 @@ class _HomePageState extends State<HomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: tabSelection == 0
-                                ? Colors.white
-                                : Colors.transparent,
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                tabSelection = 0;
-                              });
-                            },
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              tabSelection = 0;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              color: tabSelection == 0
+                                  ? Colors.white
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
                             child: SizedBox(
                               width: 140,
                               child: Text(
@@ -101,19 +101,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: tabSelection == 1
-                                  ? Colors.white
-                                  : Colors.transparent),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                tabSelection = 1;
-                              });
-                            },
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              tabSelection = 1;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: tabSelection == 1
+                                    ? Colors.white
+                                    : Colors.transparent),
                             child: SizedBox(
                               width: 140,
                               child: Text(
@@ -137,35 +137,47 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 12,
             ),
-            Container(
-              color: colorLight,
-              padding: const EdgeInsets.all(15),
-              child: const Column(
+            SizedBox(
+              height: 250,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Tesla Plaid',
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * .85,
+                    child: CarCard(),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * .85,
+                    child: CarCard(),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * .85,
+                    child: CarCard(),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * .85,
+                    child: CarCard(),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
                 ],
               ),
-            ),
-            Text('Model X'),
+            )
           ],
         ),
       ),
