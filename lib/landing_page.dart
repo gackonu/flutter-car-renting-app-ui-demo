@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_default/constants.dart';
+import 'package:flutter_default/home_page.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -30,9 +31,9 @@ class LandingPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Spacer(),
+                const Spacer(),
                 Container(
-                  padding: EdgeInsets.all(30),
+                  padding: const EdgeInsets.all(30),
                   child: Column(
                     children: [
                       const Text(
@@ -58,20 +59,29 @@ class LandingPage extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      Container(
-                        width: double.infinity,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(40),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Let\'s Rent',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) {
+                              return const HomePage();
+                            }),
+                          );
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'Let\'s Rent',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -86,36 +96,38 @@ class LandingPage extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  child: Container(
-                    color: Colors.transparent,
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 180,
-                        ),
-                        Transform.scale(
-                          scaleY: 1.3,
-                          child: RichText(
-                            text: const TextSpan(children: [
-                              TextSpan(
-                                text: 'JON',
-                                style: TextStyle(
-                                  fontSize: 80,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 254, 203, 57),
-                                ),
-                              ),
-                              TextSpan(
-                                  text: 'SON',
+                  child: IgnorePointer(
+                    child: Container(
+                      color: Colors.transparent,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 180,
+                          ),
+                          Transform.scale(
+                            scaleY: 1.3,
+                            child: RichText(
+                              text: const TextSpan(children: [
+                                TextSpan(
+                                  text: 'JON',
                                   style: TextStyle(
                                     fontSize: 80,
                                     fontWeight: FontWeight.bold,
-                                  ))
-                            ]),
+                                    color: Color.fromARGB(255, 254, 203, 57),
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: 'SON',
+                                    style: TextStyle(
+                                      fontSize: 80,
+                                      fontWeight: FontWeight.bold,
+                                    ))
+                              ]),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

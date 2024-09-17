@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_default/constants.dart';
 import 'package:flutter_default/landing_page.dart';
 
 void main() {
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Nunito',
+        scaffoldBackgroundColor: colorDeep,
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
