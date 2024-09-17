@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_default/constants.dart';
 
 class LandingPage extends StatelessWidget {
@@ -82,39 +83,74 @@ class LandingPage extends StatelessWidget {
             ),
           ),
           Positioned(
-            child: Container(
-              // margin: EdgeInsets.only(
-                // top: MediaQuery.of(context).size.height * .2,
-                // left: MediaQuery.of(context).size.width * .1,
-              // ),
-              child: Stack(
-                children: [
-                  Center(
-                    child: const Positioned(
-                      // top: 0,
-                      child: Text(
-                        'JONSON',
-                        style: TextStyle(
-                          fontSize: 100,
-                          fontWeight: FontWeight.bold,
+            child: Stack(
+              children: [
+                Positioned(
+                  child: Container(
+                    color: Colors.transparent,
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 180,
                         ),
-                      ),
+                        Transform.scale(
+                          scaleY: 1.3,
+                          child: RichText(
+                            text: const TextSpan(children: [
+                              TextSpan(
+                                text: 'JON',
+                                style: TextStyle(
+                                  fontSize: 80,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromARGB(255, 254, 203, 57),
+                                ),
+                              ),
+                              TextSpan(
+                                  text: 'SON',
+                                  style: TextStyle(
+                                    fontSize: 80,
+                                    fontWeight: FontWeight.bold,
+                                  ))
+                            ]),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Center(
-                    child: Positioned(
-                      child: ClipRect(
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          widthFactor: 0.7, // Show only half of the image
-                          child: Image.asset(
-                              'assets/images/pngimg.com - tesla_car_PNG41.png'),
-                        ),
+                ),
+                Positioned(
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 250,
                       ),
-                    ),
-                  )
-                ],
-              ),
+                      Row(
+                        children: [
+                          Container(
+                            color: Colors.blue,
+                            width: 90,
+                          ),
+                          Transform.rotate(
+                            angle: -0.1,
+                            child: ClipRect(
+                              clipBehavior: Clip.none,
+                              child: Align(
+                                widthFactor: 0.1,
+                                alignment: Alignment.centerLeft,
+                                child: Image.asset(
+                                  'assets/images/pngimg.com - tesla_car_PNG41.png',
+                                  height: 300,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
