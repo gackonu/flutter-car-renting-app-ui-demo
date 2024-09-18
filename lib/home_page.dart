@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_default/cmps/carCard.dart';
 import 'package:flutter_default/constants.dart';
 import 'package:flutter_default/data.dart';
+import 'package:flutter_default/details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -151,13 +152,23 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 itemCount: carDetails.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.only(
-                      left: index == 0 ? 24 : 0,
-                      right: index == carDetails.length - 1 ? 24 : 0,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return DetailsPage(
+                          details: carDetails[index],
+                        );
+                      }));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.only(
+                        left: index == 0 ? 24 : 0,
+                        right: index == carDetails.length - 1 ? 24 : 0,
+                      ),
+                      width: MediaQuery.of(context).size.width * .85,
+                      child: CarCard(car: carDetails[index]),
                     ),
-                    width: MediaQuery.of(context).size.width * .85,
-                    child: CarCard(car: carDetails[index]),
                   );
                 },
               ),
@@ -197,39 +208,49 @@ class _HomePageState extends State<HomePage> {
                 },
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                itemCount: carDetails.length,
+                itemCount: carDetails.length - 3,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(20),
-                    width: MediaQuery.of(context).size.width * .5,
-                    decoration: BoxDecoration(
-                      color: colorLight,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FittedBox(
-                          child: Text(
-                            carDetails[index]['name'].toString(),
-                            style: const TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return DetailsPage(
+                          details: carDetails[index + 2],
+                        );
+                      }));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      width: MediaQuery.of(context).size.width * .5,
+                      decoration: BoxDecoration(
+                        color: colorLight,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          FittedBox(
+                            child: Text(
+                              carDetails[index + 2]['name'].toString(),
+                              style: const TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        Text(
-                          carDetails[index]['model'].toString(),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Image.asset(
-                          carDetails[index]['image'].toString(),
-                          fit: BoxFit.fitWidth,
-                        )
-                      ],
+                          Text(
+                            carDetails[index + 2]['model'].toString(),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Image.asset(
+                            carDetails[index + 2]['image'].toString(),
+                            fit: BoxFit.fitWidth,
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
