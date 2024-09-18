@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
               height: 250,
               child: ListView.separated(
                 separatorBuilder: (context, index) {
-                  return SizedBox(
+                  return const SizedBox(
                     width: 20,
                   );
                 },
@@ -152,45 +152,89 @@ class _HomePageState extends State<HomePage> {
                 itemCount: carDetails.length,
                 itemBuilder: (context, index) {
                   return Container(
+                    padding: EdgeInsets.only(
+                      left: index == 0 ? 24 : 0,
+                      right: index == carDetails.length - 1 ? 24 : 0,
+                    ),
                     width: MediaQuery.of(context).size.width * .85,
-                    child: CarCard(),
+                    child: CarCard(car: carDetails[index]),
                   );
                 },
-                //   SizedBox(
-                //     width: 20,
-                //   ),
-                //   Container(
-                //     width: MediaQuery.of(context).size.width * .85,
-                //     child: CarCard(),
-                //   ),
-                // children: [
-                //   SizedBox(
-                //     width: 20,
-                //   ),
-                //   Container(
-                //     width: MediaQuery.of(context).size.width * .85,
-                //     child: CarCard(),
-                //   ),
-                //   SizedBox(
-                //     width: 20,
-                //   ),
-                //   Container(
-                //     width: MediaQuery.of(context).size.width * .85,
-                //     child: CarCard(),
-                //   ),
-                //   SizedBox(
-                //     width: 20,
-                //   ),
-                //   Container(
-                //     width: MediaQuery.of(context).size.width * .85,
-                //     child: CarCard(),
-                //   ),
-                //   SizedBox(
-                //     width: 20,
-                //   ),
-                // ],
               ),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Luxury Class',
+                  style: TextStyle(
+                    fontSize: 32,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                horizontal: 30,
+              ),
+              height: 190,
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    width: 10,
+                  );
+                },
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: carDetails.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: const EdgeInsets.all(20),
+                    width: MediaQuery.of(context).size.width * .5,
+                    decoration: BoxDecoration(
+                      color: colorLight,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        FittedBox(
+                          child: Text(
+                            carDetails[index]['name'].toString(),
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          carDetails[index]['model'].toString(),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Image.asset(
+                          carDetails[index]['image'].toString(),
+                          fit: BoxFit.fitWidth,
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),

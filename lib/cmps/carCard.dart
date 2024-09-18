@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_default/cmps/detailsbrief.dart';
 import 'package:flutter_default/constants.dart';
 
-class CarCard extends StatefulWidget {
-  const CarCard({super.key});
+class CarCard extends StatelessWidget {
+  final dynamic car;
 
-  @override
-  State<CarCard> createState() => _CarCardState();
-}
-
-class _CarCardState extends State<CarCard> {
+  const CarCard({super.key, required this.car});
   @override
   Widget build(BuildContext context) {
+    final List<Widget> specs = [];
+    for (var spec in car['specs']) {
+      specs.add(Detailsbrief(
+          title: spec['title'],
+          subtitle: spec['subtitle'],
+          value: spec['value']));
+    }
     return Container(
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -23,20 +26,20 @@ class _CarCardState extends State<CarCard> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Tesla Plaid',
-                    style: TextStyle(
+                    car['name'],
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
                     ),
                   ),
                   Text(
-                    'Model X',
-                    style: TextStyle(
+                    car['model'],
+                    style: const TextStyle(
                       fontSize: 17,
                     ),
                   ),
@@ -49,7 +52,7 @@ class _CarCardState extends State<CarCard> {
                     padding: const EdgeInsets.only(
                       top: 1,
                       left: 1,
-                      right: 5,
+                      right: 1,
                       bottom: 1,
                     ),
                     decoration: BoxDecoration(
@@ -69,7 +72,7 @@ class _CarCardState extends State<CarCard> {
                     width: 3,
                   ),
                   const Text(
-                    '80%',
+                    '100%',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,33 +83,35 @@ class _CarCardState extends State<CarCard> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-            child: Image.asset('assets/images/1.png'),
+            child: Image.asset(
+              car['image'],
+              height: 125,
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Detailsbrief(
-                title: '386',
-                subtitle: 'mi',
-                value: 'Range',
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: specs
+              // [
+              //   Detailsbrief(
+              //     title: '386',
+              //     subtitle: 'mi',
+              //     value: 'Range',
+              //   ),
+              // Detailsbrief(
+              //   title: '1,020',
+              //   subtitle: 'hp',
+              //   value: 'Peak Power',
+              // ),
+              // Detailsbrief(
+              //   title: '200',
+              //   subtitle: 'mph',
+              //   value: '1/4 Mile',
+              // ),
+              // Detailsbrief(
+              //   title: '1.99',
+              //   subtitle: 's',
+              //   value: '0-60mph',
+              // ),
+              // ],
               ),
-              Detailsbrief(
-                title: '1,020',
-                subtitle: 'hp',
-                value: 'Peak Power',
-              ),
-              Detailsbrief(
-                title: '200',
-                subtitle: 'mph',
-                value: '1/4 Mile',
-              ),
-              Detailsbrief(
-                title: '1.99',
-                subtitle: 's',
-                value: '0-60mph',
-              ),
-            ],
-          ),
         ],
       ),
     );
