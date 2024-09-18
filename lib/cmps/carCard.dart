@@ -80,7 +80,7 @@ class _CarCardState extends State<CarCard> {
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-            child: Image.asset('assets/images/2022-Tesla-Model_X.png'),
+            child: Image.asset('assets/images/1.png'),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

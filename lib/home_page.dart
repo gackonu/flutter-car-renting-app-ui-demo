@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_default/cmps/carCard.dart';
 import 'package:flutter_default/constants.dart';
+import 'package:flutter_default/data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -141,41 +142,53 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(
               height: 250,
-              child: ListView(
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    width: 20,
+                  );
+                },
                 scrollDirection: Axis.horizontal,
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
+                itemCount: carDetails.length,
+                itemBuilder: (context, index) {
+                  return Container(
                     width: MediaQuery.of(context).size.width * .85,
                     child: CarCard(),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * .85,
-                    child: CarCard(),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * .85,
-                    child: CarCard(),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * .85,
-                    child: CarCard(),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                ],
+                  );
+                },
+                //   SizedBox(
+                //     width: 20,
+                //   ),
+                //   Container(
+                //     width: MediaQuery.of(context).size.width * .85,
+                //     child: CarCard(),
+                //   ),
+                // children: [
+                //   SizedBox(
+                //     width: 20,
+                //   ),
+                //   Container(
+                //     width: MediaQuery.of(context).size.width * .85,
+                //     child: CarCard(),
+                //   ),
+                //   SizedBox(
+                //     width: 20,
+                //   ),
+                //   Container(
+                //     width: MediaQuery.of(context).size.width * .85,
+                //     child: CarCard(),
+                //   ),
+                //   SizedBox(
+                //     width: 20,
+                //   ),
+                //   Container(
+                //     width: MediaQuery.of(context).size.width * .85,
+                //     child: CarCard(),
+                //   ),
+                //   SizedBox(
+                //     width: 20,
+                //   ),
+                // ],
               ),
             )
           ],
