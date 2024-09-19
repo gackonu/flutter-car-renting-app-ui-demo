@@ -85,6 +85,7 @@ class LandingPage extends StatelessWidget {
                             ),
                           ),
                         ),
+                      
                       )
                     ],
                   ),
